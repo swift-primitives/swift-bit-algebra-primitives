@@ -22,15 +22,19 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-algebra-field-primitives"),
-        .package(path: "../swift-bit-primitives"),
+        .package(url: "https://github.com/swift-primitives/swift-algebra-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-bit-primitives.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "Bit Algebra Primitives",
             dependencies: [
-                .product(name: "Algebra Field Primitives", package: "swift-algebra-field-primitives"),
-                .product(name: "Bit Boolean Primitives", package: "swift-bit-primitives"),
+                .product(name: "Algebra Monoid Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Semiring Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Semilattice Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Lattice Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Field Primitives", package: "swift-algebra-primitives"),
+                .product(name: "Bit Primitive", package: "swift-bit-primitives"),
             ]
         ),
         .target(

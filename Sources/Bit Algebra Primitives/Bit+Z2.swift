@@ -24,7 +24,7 @@ extension Bit {
                     combining: { $0 & $1 }
                 )
             ),
-            reciprocal: { (element: Bit) throws(Algebra.Field<Bit>.Error) -> Bit in
+            reciprocal: { (element: Self) throws(Algebra.Field<Self>.Error) -> Self in
                 guard element == .one else { throw .nonInvertible }
                 return element
             }
