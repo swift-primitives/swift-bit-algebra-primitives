@@ -1,12 +1,13 @@
 import Bit_Algebra_Primitives
 import Testing
 
-@Suite("Bit.Z2 Tests")
-struct BitZ2Tests {
+@Suite struct `Bit.Z2 Tests` {
     @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
 }
 
-extension BitZ2Tests.Unit {
+extension `Bit.Z2 Tests`.Unit {
     @Test
     func `additive identity is zero`() {
         #expect(Bit.z2.zero == .zero)

@@ -1,17 +1,22 @@
 import Bit_Algebra_Primitives
 import Testing
 
-@Suite("Bit Boolean Algebra")
-struct BitBooleanAlgebraTests {
-    @Suite struct Monoid {}
-    @Suite struct Semiring {}
-    @Suite struct Semilattice {}
-    @Suite struct Lattice {}
+@Suite struct `Bit Boolean Algebra Tests` {
+    @Suite struct Unit {
+        @Suite struct Monoid {}
+        @Suite struct Semiring {}
+        @Suite struct Semilattice {}
+        @Suite struct Lattice {}
+    }
+
+    @Suite struct `Edge Case` {}
+
+    @Suite struct Integration {}
 }
 
 // MARK: - Monoid
 
-extension BitBooleanAlgebraTests.Monoid {
+extension `Bit Boolean Algebra Tests`.Unit.Monoid {
     @Test
     func `conjunction monoid has identity one and combines with AND`() {
         let m = Algebra.Monoid<Bit>.conjunction
@@ -33,7 +38,7 @@ extension BitBooleanAlgebraTests.Monoid {
 
 // MARK: - Semiring
 
-extension BitBooleanAlgebraTests.Semiring {
+extension `Bit Boolean Algebra Tests`.Unit.Semiring {
     @Test
     func `boolean semiring zero is .zero and one is .one`() {
         let sr = Algebra.Semiring<Bit>.Commutative()
@@ -53,7 +58,7 @@ extension BitBooleanAlgebraTests.Semiring {
 
 // MARK: - Semilattice
 
-extension BitBooleanAlgebraTests.Semilattice {
+extension `Bit Boolean Algebra Tests`.Unit.Semilattice {
     @Test
     func `disjunction semilattice has identity zero`() {
         let or = Algebra.Semilattice<Bit>.disjunction
@@ -88,7 +93,7 @@ extension BitBooleanAlgebraTests.Semilattice {
 
 // MARK: - Lattice
 
-extension BitBooleanAlgebraTests.Lattice {
+extension `Bit Boolean Algebra Tests`.Unit.Lattice {
     @Test
     func `bit lattice: join is OR, meet is AND`() {
         let l = Algebra.Lattice<Bit>()
