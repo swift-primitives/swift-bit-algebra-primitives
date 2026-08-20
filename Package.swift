@@ -1,15 +1,15 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 
 import PackageDescription
 
 let package = Package(
     name: "swift-bit-algebra-primitives",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27"),
-        .visionOS("27")
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
+        .visionOS(.v27),
     ],
     products: [
         .library(
@@ -22,8 +22,14 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-primitives/swift-algebra-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-bit-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-primitives/swift-algebra-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-bit-primitives.git",
+            branch: "main"
+        ),
     ],
     targets: [
         .target(
@@ -31,7 +37,10 @@ let package = Package(
             dependencies: [
                 .product(name: "Algebra Monoid Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Algebra Semiring Primitives", package: "swift-algebra-primitives"),
-                .product(name: "Algebra Semilattice Primitives", package: "swift-algebra-primitives"),
+                .product(
+                    name: "Algebra Semilattice Primitives",
+                    package: "swift-algebra-primitives"
+                ),
                 .product(name: "Algebra Lattice Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Algebra Field Primitives", package: "swift-algebra-primitives"),
                 .product(name: "Bit Primitive", package: "swift-bit-primitives"),
@@ -40,7 +49,7 @@ let package = Package(
         .target(
             name: "Bit Algebra Primitives Test Support",
             dependencies: [
-                "Bit Algebra Primitives",
+                "Bit Algebra Primitives"
             ],
             path: "Tests/Support"
         ),
