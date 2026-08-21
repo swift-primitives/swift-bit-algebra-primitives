@@ -14,8 +14,6 @@ import Testing
     @Suite struct Integration {}
 }
 
-// MARK: - Monoid
-
 extension `Bit Boolean Algebra Tests`.Unit.Monoid {
     @Test
     func `conjunction monoid has identity one and combines with AND`() {
@@ -36,8 +34,6 @@ extension `Bit Boolean Algebra Tests`.Unit.Monoid {
     }
 }
 
-// MARK: - Semiring
-
 extension `Bit Boolean Algebra Tests`.Unit.Semiring {
     @Test
     func `boolean semiring zero is .zero and one is .one`() {
@@ -55,8 +51,6 @@ extension `Bit Boolean Algebra Tests`.Unit.Semiring {
         #expect(sr.multiplying(.one, .zero) == .zero)
     }
 }
-
-// MARK: - Semilattice
 
 extension `Bit Boolean Algebra Tests`.Unit.Semilattice {
     @Test
@@ -91,8 +85,6 @@ extension `Bit Boolean Algebra Tests`.Unit.Semilattice {
     }
 }
 
-// MARK: - Lattice
-
 extension `Bit Boolean Algebra Tests`.Unit.Lattice {
     @Test
     func `bit lattice: join is OR, meet is AND`() {
@@ -121,15 +113,12 @@ extension `Bit Boolean Algebra Tests`.Unit.Lattice {
         }
     }
 
-    // `Bit` IS a two-element Boolean algebra: the lattice + the native `~`
-    // complement. There is no `Algebra.Boolean` witness type (mirrors the
-    // `Swift.Bool` treatment in `swift-bool-algebra-primitives`).
     @Test
     func `bit complement laws via native ~ over the bit lattice`() {
         let l = Algebra.Lattice<Bit>()
         for a in [Bit.zero, .one] {
-            #expect(l.join(a, ~a) == l.top)  // a ∨ ¬a = ⊤
-            #expect(l.meet(a, ~a) == l.bottom)  // a ∧ ¬a = ⊥
+            #expect(l.join(a, ~a) == l.top)
+            #expect(l.meet(a, ~a) == l.bottom)
         }
     }
 
